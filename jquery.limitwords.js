@@ -56,9 +56,15 @@ jQuery.fn.limitWords = function(options){
 		}
 	});
 	jQuery(this).click(function() {
-	  jQuery(this).keypress();
+		jQuery(this).keypress();
 	});
 	jQuery(this).change(function() {
-	  jQuery(this).keypress();
+		jQuery(this).keypress();
 	});
+	jQuery(this).keydown(function() {
+		var key = event.keyCode || event.charCode;
+
+		if( key == 8 || key == 46 )
+			jQuery(this).keypress();
+  	});
 }
