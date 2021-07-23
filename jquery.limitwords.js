@@ -19,10 +19,10 @@ jQuery.fn.limitWords = function(options){
 	if(options){
 		jQuery.extend(d, options);
 	}
-	$(this).keypress(function(){
-		var words = $(this).val().split(/[\s]+/);
+	jQuery(this).keypress(function(){
+		var words = jQuery(this).val().split(/[\s]+/);
 		var num_words = words.length;
-		if($(this).val() == ''){
+		if(jQuery(this).val() == ''){
 			num_words = 0;
 		}
 		
@@ -32,33 +32,33 @@ jQuery.fn.limitWords = function(options){
 		if(d.limit){
 			if(num_words > d.limit){ // over... copied in, trim it!
 				if(d.leftSelector && d.atColor){
-					$(d.leftSelector).css('color', d.overColor);
+					jQuery(d.leftSelector).css('color', d.overColor);
 				}
-				$(this).val(words.splice(0, d.limit).join(' '));
+				jQuery(this).val(words.splice(0, d.limit).join(' '));
 				left = 0;
 				mreturn = false;
 			}
 			
 			if(left == 0){ // at 
 				if(d.leftSelector && d.atColor){
-					$(d.leftSelector).css('color', d.atColor);
+					jQuery(d.leftSelector).css('color', d.atColor);
 				}
 			}else{ // under... we coo
 				if(d.leftSelector && d.underColor){
-					$(d.leftSelector).css('color', d.underColor);
+					jQuery(d.leftSelector).css('color', d.underColor);
 				}
 			}
 			
 			if(d.leftSelector){
-				$(d.leftSelector).html(Math.abs(left) +" left");
+				jQuery(d.leftSelector).html(Math.abs(left));
 			}
 			return mreturn;
 		}
 	});
-	$(this).click(function() {
-	  $(this).keypress();
+	jQuery(this).click(function() {
+	  jQuery(this).keypress();
 	});
-	$(this).change(function() {
-	  $(this).keypress();
+	jQuery(this).change(function() {
+	  jQuery(this).keypress();
 	});
 }
